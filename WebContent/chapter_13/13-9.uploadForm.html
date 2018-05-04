@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.form.min.js"></script>
+<script>
+	$(function() {
+/* 		function selectAll() {
+			$.ajax({
+				type : "post",//전송방식
+				url : "../upLoadServlet", //서버주소
+				dataType : "json",
+				sucess : function(result) {
+					alert(result);
+				},
+				error : function(error){
+					alert(error);
+				}
+			})
+		} */
+		
+		$("input[type=button]").on("click",function(){
+			$("#uploadForm").ajaxForm({
+				type : "post",//전송방식
+				url : "../upLoadServlet", //서버주소
+				dataType : "json",
+				sucess : function(result) {
+					alert(result);
+					var str="";
+					$.each(result,function(index,item){
+						str+=" 작성자 : "+item.name+"<br/>"
+						str+=" 제목 : "+item.subject+"<br/>"
+						str+=" 파일이름 : "+item.fileName+"<br/>"
+						str+=" 파일사이즈 : "+item.fileSize+"<br/>"
+					})
+					$("div").html(str);
+				},
+				error : function(error){
+					alert(error);
+				}
+			});//ajaxForm 끝
+			
+			$("#uploadForm").submit();
+		})
+	})
+</script>
+</head>
+<body>
+	<h1></h1>
+	<form method="post" enctype="multipart/form-data" name="uploadForm" id="uploadForm"></form>
+	이름 <input type="text" name="name" id="" />
+	제목 <input type="text" name="subject" id="" />
+	파일첨부: <input type="file" name="file" id="file" />
+	<input type="button" value="업로드하기" />
+	<div></div>
+</body>
+</html>

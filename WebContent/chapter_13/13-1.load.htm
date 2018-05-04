@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">	
+<head>
+	<meta  charset="UTF-8"/>
+    <title>load 메서드</title>
+	<style>
+		div{width:300px;height:200px;
+		    background-color:yellow; 
+		}
+		
+	</style>
+     <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+     <script>
+     	$(function() {
+			$("#btn").click(function() {		// 버튼을 누르게 된다면 server와 통신을 하겠다는 의미
+				$("#display").load("13-1.serverPage.html");		// ajax 가공 없이 바로 사용할때에는 load 사용
+				//serverPage.html 에서 받아온 결과를 $() 선택자에 넣어주는 것
+				// load함수는 서버의 결과 데이터를 그대로 화면에 반영할대 사용하면 좋다.
+			});    		
+     	});
+     </script>
+   
+</head>
+<body>
+	<h3>소스 13-1 $(selector).load(url , [params] , [callbackFun]) 함수 </h3>
+	<!-- param은 클라이언트가 서버에 보내는 것으로 받으려면 jsp문서여야 한다 -->
+    <input type="button" id="btn" value="load함수 요청" />
+    <div id="display">요청결과 출력영역</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
